@@ -1,0 +1,30 @@
+<h1>New Article</h1>
+
+<%# The form_with helper method instantiates a form builder.
+In the form_with block we call methods like label and text_field on the form
+builder to output the appropiate form elements. %>
+
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+<%# The full_message_for method returns an array of user-friendly error messages for 
+specified attibuite. If there are no errors for that attribute, the array will be empty.%>
+  
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
