@@ -12,6 +12,7 @@ end
 Rails.application.routes.draw do
   root "articles#index"
 
-  get "articles", to: "articles#index"
-  get "articles/:id", to: "articles#show"
+  # get "/articles", to: "articles#index" gets replaced by:
+  # get "articles/:id", to: "articles#show" gets replaced by:
+  resources :articles
 end
