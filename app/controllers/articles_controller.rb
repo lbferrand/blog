@@ -43,6 +43,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # The destroy action is responsible for retrieving the article from the database and
+  # destroys it. Then, it redirects the user to the root path.
+  def destroy
+    @article= Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   # Add private method to the bottom of the controller file. 
   # This method will avoid for malicious users could potentially submit extra form fields and 
   # overwrite existing values in the database.
