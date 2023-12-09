@@ -26,6 +26,23 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # The edit action is responsible for retrieving the article from the database and 
+  # stores it in the @article instance variable when building the form.
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article= Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   # Add private method to the bottom of the controller file. 
   # This method will avoid for malicious users could potentially submit extra form fields and 
   # overwrite existing values in the database.
