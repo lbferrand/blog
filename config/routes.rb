@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   # get "/articles", to: "articles#index" gets replaced by:
   # get "articles/:id", to: "articles#show" gets replaced by:
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 end
