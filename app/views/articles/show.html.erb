@@ -1,6 +1,31 @@
-<h1><%= @article.title %></h1>
+<h1>Blog App</h1>
+<p>This blog has been created using Ruby on Rails.</p>
+<p>It is a simple blog app that allows users to create, edit, and delete articles.</p>
+<h2>Articles</h2>
 
+<h3><%= @article.title %></h3>
 <p><%= @article.body %></p>
+
+<%# In the above code, we use the data option to set the data-turbo-method and 
+data-turbo-confirm HTML attributes of the "Destroy" link.%>
+
+<h2>Comments</h2> 
+<% render @article.comments %>
+
+<h3>Add a comment:</h3>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+<p>
+  <%= form.label :commenter %><br>
+  <%= form.text_field :commenter %>
+</p>
+<p>
+  <%= form.label :body %><br>
+  <%= form.text_area :body %>
+</p>
+<p>
+  <%= form.submit %> 
+</p>
+<% end %>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
@@ -9,6 +34,3 @@
                   turbo_confirm: "Are you sure?"
                 } %></li>
 </ul>
-
-<%# In the above code, we use the data option to set the data-turbo-method and 
-data-turbo-confirm HTML attributes of the "Destroy" link.%>
