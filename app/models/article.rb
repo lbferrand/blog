@@ -2,7 +2,9 @@
 # The first validation ensures that the title is present,
 # and the second validation ensures that the body is present and at least 10 characters long.
 class Article < ApplicationRecord
-  has_many :comments
+  include Visible
+
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
