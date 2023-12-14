@@ -1,6 +1,14 @@
 <h1>Articles</h1>
-<%= link_to "New Article", new_article_path %>
 
+<h4>Disclaimer</h4>
+<p>This is a blog where the author can write articles and readers can comment on them.
+The purpose of this blog is to express the author's opinions and to share ideas with the readers.
+Articles are public by default, but can be made private or archived.
+Any article can be commented on, but only public articles can be commented on by readers.
+Comments can be public or private.
+Private comments are only visible to the author.</p>
+
+<%= link_to "New Article", new_article_path %>
 <p>Our blog has <%= Article.public_count %> articles and counting!</p>
 
 <ul>
