@@ -57,6 +57,6 @@ class ArticlesController < ApplicationController
   # overwrite existing values in the database.
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :body, :status)
     end
 end
